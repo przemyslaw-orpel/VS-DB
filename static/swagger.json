@@ -1,0 +1,91 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Workshop API",
+      "description": "API for managing a vehicle workshop"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/employees": {
+        "get": {
+          "summary": "Get all employees",
+          "responses": {
+            "200": {
+              "description": "List of employees",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Employee"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/vehicles": {
+        "get": {
+          "summary": "Get all vehicles",
+          "responses": {
+            "200": {
+              "description": "List of vehicles",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Vehicle"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/orders": {
+        "get": {
+          "summary": "Get all orders",
+          "responses": {
+            "200": {
+              "description": "List of orders",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "first_name": { "type": "string" },
+          "last_name": { "type": "string" }
+        }
+      },
+      "Vehicle": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "model": { "type": "string" },
+          "brand": { "type": "string" },
+          "vin": { "type": "string" },
+          "fuel_type_id": { "type": "integer" }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "description": { "type": "string" },
+          "creation_date": { "type": "string", "format": "date-time" },
+          "employee_id": { "type": "integer" },
+          "vehicle_id": { "type": "integer" }
+        }
+      }
+    }
+  }
